@@ -196,15 +196,15 @@ public class MyExternalIPAddress_Thread extends Thread{
 	    }
     	return false;
     }    
-      
-	private void addExToLogs(Exception ex) {
-		Form.saveExceptions(ex, "imapClient.MyExternalIPAddress_Thread");//ex.printStackTrace();
-		String exception = ex.getClass().getName();
-		String exMsg = ex.getMessage();
-		if (exMsg != null) exception += ": " + exMsg;
-		else exception += " at " + ex.getStackTrace()[0].toString();
-		Throwable cause = ex.getCause();
-		if (cause != null) exception = exception + " Caused by: " + cause.getMessage();
-		Form.addLogs("ERROR [imapClient.MyExternalIPAddress_Thread]: "+exception+"\r\n", -1);	
-	}
+	
+    private void addExToLogs(Exception ex) {
+	Form.saveExceptions(ex, "imapClient.MyExternalIPAddress_Thread");
+	String exception = ex.getClass().getName();
+	String exMsg = ex.getMessage();
+	if (exMsg != null) exception += ": " + exMsg;
+	else exception += " at " + ex.getStackTrace()[0].toString();
+	Throwable cause = ex.getCause();
+	if (cause != null) exception = exception + " Caused by: " + cause.getMessage();
+	Form.addLogs("ERROR [imapClient.MyExternalIPAddress_Thread]: "+exception+"\r\n", -1);
+    }
 }
